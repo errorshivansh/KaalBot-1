@@ -1,1 +1,1 @@
-worker: bash kaalbot
+worker: bash Kaalbot
