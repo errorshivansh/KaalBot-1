@@ -11,4 +11,4 @@ RUN pip3 install -U -r requirements.txt
 
 ENV PATH="/home/userbot/bin:$PATH"
 
-CMD ["python3","-m","kaalbot"]
+CMD ["python3","-m","Kaalbot"]
