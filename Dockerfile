@@ -1,7 +1,7 @@
-FROM teamvaders/hellbot:latest
+FROM teamKaal/kaalbot:latest
 
 #clonning repo 
-RUN git clone https://github.com/TheVaders/InVade.git /root/hellbot
+RUN git clone https://github.com/kaal0408/kaal-Userbot.git /root/kaalbot
 
 #working directory 
 WORKDIR /root/hellbot
@@ -11,4 +11,4 @@ RUN pip3 install -U -r requirements.txt
 
 ENV PATH="/home/userbot/bin:$PATH"
 
-CMD ["python3","-m","hellbot"]
+CMD ["python3","-m","kaalbot"]
