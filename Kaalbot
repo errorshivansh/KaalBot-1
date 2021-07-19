@@ -4,42 +4,42 @@
 _repolink () {
     local regex
     regex='(https?)://github.com/.+/.+'
-    if [[ $HELL_REPO == "HellBot" ]]
+    if [[ $Kaal_REPO == "KaalBot" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZVZhZGVycy9JblZhZGUvYXJjaGl2ZS9tYXN0ZXIuemlw" | base64 -d
-    elif [[ $HELL_REPO == "Hellbot" ]]
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0thYWwwNDA4L0thYWwtVXNlcmJvdC9hcmNoaXZlL21haW4uemlw" | base64 -d
+    elif [[ $Kaal_REPO == "Kaalbot" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZVZhZGVycy9JblZhZGUvYXJjaGl2ZS9tYXN0ZXIuemlw" | base64 -d
-    elif [[ $HELL_REPO =~ $regex ]]
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0thYWwwNDA4L0thYWwtVXNlcmJvdC9hcmNoaXZlL21haW4uemlw" | base64 -d
+    elif [[ $Kaal_REPO =~ $regex ]]
     then
-        if [[ $HELL_REPO_BRANCH ]]
+        if [[ $Kaal_REPO_BRANCH ]]
         then
-            echo "${HELL_REPO}/archive/${HELL_REPO_BRANCH}.zip"
+            echo "${Kaal_REPO}/archive/${Kaal_REPO_BRANCH}.zip"
         else
-            echo "${HELL_REPO}/archive/master.zip"
+            echo "${Kaal_REPO}/archive/master.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZVZhZGVycy9JblZhZGUvYXJjaGl2ZS9tYXN0ZXIuemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0thYWwwNDA4L0thYWwtVXNlcmJvdC9hcmNoaXZlL21haW4uemlw" | base64 -d
     fi
 }
 
 
 start_bot () {
     local zippath
-    zippath="myhellbot.zip"
+    zippath="myKaalbot.zip"
     echo "  Downloading source code ..."
     wget -q $(_repolink) -O "$zippath"
     echo "  Unpacking Data ..."
-    HELLPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
+    KaalPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
     unzip -qq "$zippath"
     echo "  Processing Codes..."
     rm -rf "$zippath"
     sleep 5
-    cd $HELLPATH
-    echo "  • Starting HellBot •  "
+    cd $KaalPATH
+    echo "  • Starting KaalBot •  "
 
     python3 ../setup/updater.py ../requirements.txt requirements.txt
-    python3 -m hellbot
+    python3 -m Kaalbot
 }
 
 start_bot
